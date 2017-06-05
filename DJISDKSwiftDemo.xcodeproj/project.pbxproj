@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		5E02D2781EE4D5A600F6511A /* SpeechBoxViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5E02D2771EE4D5A600F6511A /* SpeechBoxViewController.swift */; };
 		5E46C1AE1EE4B1DE008373B7 /* VoicePilotViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 5E46C1AD1EE4B1DE008373B7 /* VoicePilotViewController.m */; };
 		A435F1FB1E8BD61B00D58045 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = A435F1F91E8BD61B00D58045 /* Assets.xcassets */; };
 		A435F2011E8BD62B00D58045 /* BluetoothConnectorViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A435F1FE1E8BD62B00D58045 /* BluetoothConnectorViewController.swift */; };
@@ -58,6 +59,8 @@
 /* Begin PBXFileReference section */
 		128ABACC526C7880A0AB3F06 /* Pods-DJISDKSwiftDemo.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-DJISDKSwiftDemo.release.xcconfig"; path = "Pods/Target Support Files/Pods-DJISDKSwiftDemo/Pods-DJISDKSwiftDemo.release.xcconfig"; sourceTree = "<group>"; };
 		4B0C6B02B8D1383630F1B67E /* Pods-DJISDKSwiftDemo.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-DJISDKSwiftDemo.debug.xcconfig"; path = "Pods/Target Support Files/Pods-DJISDKSwiftDemo/Pods-DJISDKSwiftDemo.debug.xcconfig"; sourceTree = "<group>"; };
+		5E02D2721EE4CBD200F6511A /* DJISDKSwiftDemo-Swift.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "DJISDKSwiftDemo-Swift.h"; sourceTree = "<group>"; };
+		5E02D2771EE4D5A600F6511A /* SpeechBoxViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SpeechBoxViewController.swift; sourceTree = SOURCE_ROOT; };
 		5E46C1AC1EE4B1DD008373B7 /* DJISDKSwiftDemo-Bridging-Header.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "DJISDKSwiftDemo-Bridging-Header.h"; sourceTree = "<group>"; };
 		5E46C1AD1EE4B1DE008373B7 /* VoicePilotViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = VoicePilotViewController.m; sourceTree = "<group>"; };
 		5E46C1B01EE4B2F8008373B7 /* VoicePilotViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = VoicePilotViewController.h; sourceTree = "<group>"; };
@@ -119,12 +122,14 @@
 			isa = PBXGroup;
 			children = (
 				5E46C1B01EE4B2F8008373B7 /* VoicePilotViewController.h */,
+				5E02D2771EE4D5A600F6511A /* SpeechBoxViewController.swift */,
 				5E46C1AD1EE4B1DE008373B7 /* VoicePilotViewController.m */,
 				86985CCB1E834EC200577EC7 /* DJISDKSwiftDemo */,
 				86985CCA1E834EC200577EC7 /* Products */,
 				C0C7419B2667BCEE0BB6C689 /* Pods */,
 				0B6F263FBC093B7B6FB6EF51 /* Frameworks */,
 				5E46C1AC1EE4B1DD008373B7 /* DJISDKSwiftDemo-Bridging-Header.h */,
+				5E02D2721EE4CBD200F6511A /* DJISDKSwiftDemo-Swift.h */,
 			);
 			sourceTree = "<group>";
 		};
@@ -349,6 +354,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				5E02D2781EE4D5A600F6511A /* SpeechBoxViewController.swift in Sources */,
 				5E46C1AE1EE4B1DE008373B7 /* VoicePilotViewController.m in Sources */,
 				A435F2221E8BDBF200D58045 /* AppDelegate.swift in Sources */,
 				A435F20A1E8BD65500D58045 /* DJIImageAnnotation.swift in Sources */,
@@ -416,6 +422,7 @@
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				COPY_PHASE_STRIP = NO;
 				DEBUG_INFORMATION_FORMAT = dwarf;
+				DEFINES_MODULE = YES;
 				ENABLE_BITCODE = NO;
 				ENABLE_STRICT_OBJC_MSGSEND = YES;
 				ENABLE_TESTABILITY = YES;
@@ -438,6 +445,7 @@
 				ONLY_ACTIVE_ARCH = YES;
 				SDKROOT = iphoneos;
 				SWIFT_ACTIVE_COMPILATION_CONDITIONS = DEBUG;
+				SWIFT_OBJC_INTERFACE_HEADER_NAME = "SpeechBoxViewController-Swift.h";
 				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
 				TARGETED_DEVICE_FAMILY = "1,2";
 			};
@@ -468,6 +476,7 @@
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				COPY_PHASE_STRIP = NO;
 				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
+				DEFINES_MODULE = YES;
 				ENABLE_BITCODE = NO;
 				ENABLE_NS_ASSERTIONS = NO;
 				ENABLE_STRICT_OBJC_MSGSEND = YES;
@@ -482,6 +491,7 @@
 				IPHONEOS_DEPLOYMENT_TARGET = 10.0;
 				MTL_ENABLE_DEBUG_INFO = NO;
 				SDKROOT = iphoneos;
+				SWIFT_OBJC_INTERFACE_HEADER_NAME = "SpeechBoxViewController-Swift.h";
 				SWIFT_OPTIMIZATION_LEVEL = "-Owholemodule";
 				TARGETED_DEVICE_FAMILY = "1,2";
 				VALIDATE_PRODUCT = YES;
@@ -495,6 +505,7 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CLANG_ALLOW_NON_MODULAR_INCLUDES_IN_FRAMEWORK_MODULES = YES;
 				CLANG_ENABLE_MODULES = YES;
+				DEFINES_MODULE = YES;
 				DEVELOPMENT_TEAM = NSM5ESK6C7;
 				ENABLE_BITCODE = NO;
 				FRAMEWORK_SEARCH_PATHS = (
@@ -509,6 +520,7 @@
 				PRODUCT_BUNDLE_IDENTIFIER = com.example.droneme;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_OBJC_BRIDGING_HEADER = "DJISDKSwiftDemo-Bridging-Header.h";
+				SWIFT_OBJC_INTERFACE_HEADER_NAME = "DJISDKSwiftDemo-Swift.h\n";
 				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
 				SWIFT_VERSION = 3.0;
 			};
@@ -521,6 +533,7 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CLANG_ALLOW_NON_MODULAR_INCLUDES_IN_FRAMEWORK_MODULES = YES;
 				CLANG_ENABLE_MODULES = YES;
+				DEFINES_MODULE = YES;
 				DEVELOPMENT_TEAM = NSM5ESK6C7;
 				ENABLE_BITCODE = NO;
 				FRAMEWORK_SEARCH_PATHS = (
@@ -535,6 +548,7 @@
 				PRODUCT_BUNDLE_IDENTIFIER = com.example.droneme;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_OBJC_BRIDGING_HEADER = "DJISDKSwiftDemo-Bridging-Header.h";
+				SWIFT_OBJC_INTERFACE_HEADER_NAME = "DJISDKSwiftDemo-Swift.h\n";
 				SWIFT_VERSION = 3.0;
 			};
 			name = Release;

@@ -11,6 +11,7 @@
 #import "VoicePilotViewController.h"
 #import <DJISDK/DJISDK.h>
 #import <VideoPreviewer/VideoPreviewer.h>
+#import "DJISDKSwiftDemo-Swift.h"
 
 #define WeakRef(__obj) __weak typeof(self) __obj = self
 #define WeakReturn(__obj) if(__obj ==nil)return;
