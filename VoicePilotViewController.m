@@ -46,12 +46,14 @@
 
 - (void)viewDidAppear:(BOOL)animated{
     [super viewDidAppear:animated];
+    [self setupVideoPreviewer];
+
     [self registerApp];
+
 }
 
 - (void)viewDidLoad {
     [super viewDidLoad];
-    
     [self.currentRecordTimeLabel setHidden:YES];
     
     _microphoneBtn.enabled = NO;
@@ -161,7 +163,7 @@
 
 - (void)appRegisteredWithError:(NSError *)error
 {
-    NSString* message = @"Register App Successed!";
+    NSString* message = @"Register App Succeeded!";
     if (error) {
         message = @"Register App Failed! Please enter your App Key and check the network.";
     }else
@@ -334,6 +336,65 @@
     }
 }
 
+- (DJIFlightController*) fetchFlightController {
+    if (![DJISDKManager product]) {
+        return nil;
+    }
+    if ([[DJISDKManager product] isKindOfClass:[DJIAircraft class]]) {
+        return ((DJIAircraft*)[DJISDKManager product]).flightController;
+    }
+    return nil;
+}
+
+
+-(void)executeCommand:(NSString*)command {
+    //[self showAlertViewWithTitle:@"Text: " withMessage:command];
+    
+    if ([command rangeOfString:@"take"].location == NSNotFound) {
+        NSLog(@"string does not contain take off command");
+    } else {
+        DJIFlightController *flightController = [self fetchFlightController];
+        if (flightController) {
+            [flightController setDelegate:self];
+        }
+        [self showAlertViewWithTitle:@"Take Off Command" withMessage:command];
+        [flightController startTakeoffWithCompletion:^(NSError * _Nullable error) {
+            if (error) {
+                NSLog(@"Takeoff Error:%@", error.localizedDescription);
+            }
+            else
+            {
+                NSLog(@"Takeoff Succeeded.");
+            }
+        }];
+    }
+    
+    if ([command rangeOfString:@"photo"].location == NSNotFound) {
+        NSLog(@"string does not contain photo command");
+    } else {
+        NSLog(@"string contains photo command");
+        [self showAlertViewWithTitle:@"Photo Command" withMessage:command];
+        [self captureAction:self];
+    }
+    
+    if ([command rangeOfString:@"land"].location == NSNotFound) {
+        NSLog(@"string does not contain land");
+    } else {
+        NSLog(@"string contains land command");
+        DJIFlightController* flightController = [self fetchFlightController];
+        if (flightController) {
+            [flightController startLandingWithCompletion:^(NSError * _Nullable error) {
+                if (error) {
+                    NSLog(@"Land Error:%@", error.localizedDescription);
+                }
+                else
+                {
+                    NSLog(@"Land Succeeded.");
+                }
+            }];
+        }
+    }
+}
 
 -(void)startRecording { // http://stackoverflow.com/questions/37821826/continuous-speech-recogn-with-sfspeechrecognizer-ios10-beta
     if (_recognitionTask != nil) {
@@ -368,11 +429,13 @@
                                                                isFinal = result.isFinal;
                                                            }
                                                            if (error != nil || isFinal) {
+                                                               
                                                                [_audioEngine stop];
                                                                [_inputNode removeTapOnBus:0];
                                                                _recognitionRequest = nil;
                                                                _recognitionTask = nil;
                                                                _microphoneBtn.enabled = YES;
+                                                               [self executeCommand:result.bestTranscription.formattedString];
                                                            }
                                                        }];
     
